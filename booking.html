@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Booking</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Real Estate Booking</h1>
+    </header>
+    
+    <main>
+        <section class="booking-details">
+            <h2>Booking Details</h2>
+            <div class="house-info">
+                <img src="img/df.jpg" alt="House Image">
+                <div class="info">
+                    <p><strong>House Name:</strong> Dream Villa</p>
+                    <p><strong>Location:</strong> Baridhara Diplomatic Zone, Baridhara, Dhaka</p>
+                    <p><strong>Price:</strong> BDT 15.1 Lakh</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="payment-method">
+            <h2>Payment Method</h2>
+            <form action="submit_payment.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Name on Card:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <button  type="submit"><a href="payment.html">Submit Payment</a></button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; To let Finder . All rights reserved.</p>
+    </footer>
+</body>
+</html>

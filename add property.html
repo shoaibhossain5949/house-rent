@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('path/to/your/background-image.jpg'); /* Add the path to your background image here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #f8f9fa;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .add-property {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 15px;
+            background-color: #00B98E;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .add-property .plus-icon {
+            margin-right: 10px;
+            font-size: 36px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="number"] {
+            width: 100px;
+        }
+
+        .property-preview {
+            position: relative;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background for better readability */
+        }
+
+        .property-preview img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .property-details {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00B98E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #00a77c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="path/to/your/logo.png" alt="" class="logo">
+
+    <!-- Hidden file input -->
+    <input type="file" id="file-input" onchange="previewImage(event)" accept="image/*">
+
+    <div class="add-property" onclick="triggerFileInput()">
+        <i class="fas fa-plus plus-icon"></i>
+        <span>Add Property</span>
+    </div>
+
+    <!-- Property Form -->
+    <form id="property-form">
+        <div class="form-group">
+            <label for="property-name">Property Name</label>
+            <input type="text" id="property-name" placeholder="Enter property name">
+        </div>
+        <div class="form-group">
+            <label for="property-location">Location</label>
+            <input type="text" id="property-location" placeholder="Enter property location">
+        </div>
+        <div class="form-group">
+            <label for="property-price">Price (BDT)</label>
+            <input type="number" id="property-price" placeholder="Enter property price">
+        </div>
+        <div class="form-group">
+            <label for="property-beds">Beds</label>
+            <input type="number" id="property-beds" placeholder="Number of beds">
+        </div>
+        <div class="form-group">
+            <label for="property-baths">Baths</label>
+            <input type="number" id="property-baths" placeholder="Number of baths">
+        </div>
+        <button type="button" class="submit-btn" onclick="handleSubmit()">Submit</button>
+    </form>
+
+    <div class="property-preview"></div>
+
+    <div>
+        <a href="index.html">Back Home</a>
+    </div>
+
+    <script>
+        function triggerFileInput() {
+            document.getElementById('file-input').click();
+        }
+
+        function previewImage(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(){
+                var imgElement = document.createElement('img');
+                imgElement.src = reader.result;
+                imgElement.alt = "Uploaded Property Image";
+
+                var previewContainer = document.querySelector('.property-preview');
+                previewContainer.innerHTML = ''; // Clear previous images
+
+                var detailsContainer = document.createElement('div');
+                detailsContainer.className = 'property-details';
+
+                updatePropertyDetails(detailsContainer);
+
+                previewContainer.appendChild(imgElement);
+                previewContainer.appendChild(detailsContainer);
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function updatePropertyDetails(detailsContainer) {
+            var name = document.getElementById('property-name').value;
+            var location = document.getElementById('property-location').value;
+            var price = document.getElementById('property-price').value;
+            var beds = document.getElementById('property-beds').value;
+            var baths = document.getElementById('property-baths').value;
+
+            detailsContainer.innerHTML = `
+                <strong>${name}</strong><br>
+                ${location}<br>
+                Price: BDT ${price}<br>
+                Beds: ${beds}<br>
+                Baths: ${baths}
+            `;
+        }
+
+        function handleSubmit() {
+            var previewContainer = document.querySelector('.property-preview');
+            var detailsContainer = previewContainer.querySelector('.property-details');
+            if (!detailsContainer) {
+                detailsContainer = document.createElement('div');
+                detailsContainer.className = 'property-details';
+                previewContainer.appendChild(detailsContainer);
+            }
+            updatePropertyDetails(detailsContainer);
+            alert('Property submitted successfully!');
+        }
+    </script>
+</body>
+</html>

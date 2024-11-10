@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Background color for the page */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form {
+    background-color: #ffffff; /* Background color for the form */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form h2 {
+    margin-bottom: 20px;
+    color: #0E2E50; /* Header color */
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btnn {
+    width: 100%;
+    text-align: center;
+    background-color: #00B98E; /* Button background color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+.btnn a {
+    text-decoration: none;
+    color: #ffffff; /* Button text color */
+}
+
+.btnn:hover {
+    background-color: #008e71; /* Button background color on hover */
+}
+
+.link {
+    text-align: center;
+}
+
+.link a {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+}
+
+.link a:hover {
+    color: #0056b3; /* Link color on hover */
+}
+
+.liw {
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d; /* Text color for "Login in with" */
+}
+
+/* Styling for social media icons */
+.btn-social {
+    margin-right: 10px; /* Adjust the spacing between icons */
+}
+
+.btn-social i {
+    font-size: 24px; /* Adjust the size of the icons */
+}
+
+.btn-social.btn-outline-light {
+    border-color: #ffffff; /* Set the border color of the buttons */
+}
+
+.btn-social.btn-outline-light:hover {
+    border-color: #00B98E; /* Set the hover border color of the buttons */
+}
